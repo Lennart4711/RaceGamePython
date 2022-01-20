@@ -115,18 +115,14 @@ class RaceTrack:
             ua = ((x4 - x3) * (y1 - y3) - (y4 - y3) * (x1 - x3))
             ub = ((x2 - x1) * (y1 - y3) - (y2 - y1) * (x1 - x3))
 
-        if(gives_vector):
-            if(0 <= ua and ua <= 1 and 0 <= ub and ub <= 1):
-                intersectionX = x1 + (ua*(x2-x1))
-                intersectionY = y1 + (ua*(y2-y1))
-                return Vector(intersectionX, intersectionY, 0, 0)
-            else:
-                return None
+        if not (gives_vector):
+            return ua >= 0 and ua <= 1 and ub >= 0 and ub <= 1
+        if ua >= 0 and ua <= 1 and ub >= 0 and ub <= 1:
+            intersectionX = x1 + (ua*(x2-x1))
+            intersectionY = y1 + (ua*(y2-y1))
+            return Vector(intersectionX, intersectionY, 0, 0)
         else:
-            if(0 <= ua and ua <= 1 and 0 <= ub and ub <= 1):
-                return True
-            else:
-                return False
+            return None
 
     def check_crash(self):
         for x in self.car.laser:

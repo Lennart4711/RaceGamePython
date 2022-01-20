@@ -43,7 +43,7 @@ class Car:
         for x in self.laser:
             pygame.draw.line(win, laserColor,(x.nX,x.nY), (self.xPos,self.yPos))
 
-        x = self.laser[int(len(self.laser)/2)]
+        x = self.laser[len(self.laser) // 2]
         pygame.draw.line(win, (12,12,123),(x.nX,x.nY), (self.xPos,self.yPos))
 
     def accelerate(self,b):
